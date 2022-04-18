@@ -179,7 +179,7 @@ class HolidayList:
         querystring = {"q":"san francisco,us"}
         headers = {
             "X-RapidAPI-Host": "community-open-weather-map.p.rapidapi.com",
-            "X-RapidAPI-Key": "ec46b6accfmshcf7496c87fa6df6p105b29jsnb7c4987224f8"
+            "X-RapidAPI-Key": "your-key-here"
         }
         response = ""
         try:    
