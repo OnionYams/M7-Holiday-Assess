@@ -1,5 +1,7 @@
 import datetime
 import json
+from math import ceil
+from tkinter.messagebox import NO
 from bs4 import BeautifulSoup
 import requests
 from dataclasses import dataclass
@@ -39,14 +41,15 @@ class HolidayList:
     #print entire list as string
     def __str__ (self):
         outlist = []
-        for holi in self.innerHolidays:
-            outlist.append(str(holi))
+        for hd in self.innerHolidays:
+            outlist.append(str(hd))
         return str(outlist)
    
     def addHoliday(self, holidayObj):
         # Make sure holidayObj is an Holiday Object by checking the type
         # Use innerHolidays.append(holidayObj) to add holiday
         # print to the user that you added a holiday
+
         if type(holidayObj) != Holiday:
             print("Not a valid holiday object")
             return
@@ -56,6 +59,7 @@ class HolidayList:
     def findHoliday(self, HolidayName, Date):
         # Find Holiday in innerHolidays
         # Return Holiday
+
         for hd in self.innerHolidays:
             if hd.name == HolidayName and hd.date == Date:
                 return hd
@@ -64,6 +68,7 @@ class HolidayList:
         # Find Holiday in innerHolidays by searching the name and date combination.
         # remove the Holiday from innerHolidays
         # inform user you deleted the holiday
+
         for hd in self.innerHolidays:
             if hd.name == HolidayName and hd.date == Date:
                 self.innerHolidays.remove(hd)
@@ -73,6 +78,7 @@ class HolidayList:
     def read_json(self, filelocation):
         # Read in things from json file location
         # Use addHoliday function to add holidays to inner list.
+
         with open(filelocation, "r") as f:
             data = json.load(f)
             for obj in data["holidays"]:
@@ -95,39 +101,83 @@ class HolidayList:
         with open(filelocation, "w") as f:
             json.dump(jsonHolidays, f, indent = 4)
 
-    def scrapeHolidays():
+    def scrapeHolidays(self):
         # Scrape Holidays from https://www.timeanddate.com/holidays/us/ 
         # Remember, 2 previous years, current year, and 2  years into the future. You can scrape multiple years by adding year to the timeanddate URL. For example https://www.timeanddate.com/holidays/us/2022
         # Check to see if name and date of holiday is in innerHolidays array
         # Add non-duplicates to innerHolidays
-        # Handle any exceptions.     
-        a=0
+        # Handle any exceptions.    
+
+        #easier than getting year from current datetime and add/subtract
+        years = [2020,2021,2022,2023,2024] 
+        for year in years:
+            try:
+                hdsite = requests.get("https://www.timeanddate.com/holidays/us/"+str(year)).text
+                soup = BeautifulSoup(hdsite,'html.parser')
+                table = soup.find('table',attrs = {'id':'holidays-table'})
+                tbody = table.find("tbody")
+                i = 0
+                for row in tbody.find_all('tr'):
+                    #datecell = row.find_all("th")
+                    #print(datecell)
+                    days = {}
+                    if row.th != None and row.a != None:
+                        dateVal = datetime.strptime(f"{row.th.string} {str(year)}", '%b %d %Y').date()
+                        hd = Holiday(row.a.string, dateVal)
+                        if hd not in self.innerHolidays:
+                            self.addHoliday(hd)
+                    i += 1
+                    
+                    if i > 50:
+                        print("-----------------------------")
+                        break
+            except:
+                print("Something went wrong scraping the holidays site")
+
+
 
     def numHolidays(self):
         # Return the total number of holidays in innerHolidays
         return (len(self.innerHolidays))
     
-    def filter_holidays_by_week(year, week_number):
+    def filter_holidays_by_week(self, year, week_number):
         # Use a Lambda function to filter by week number and save this as holidays, use the filter on innerHolidays
         # Week number is part of the the Datetime object
         # Cast filter results as list
         # return your holidays
-        a=1
+        '''
+        for hd in self.innerHolidays:
+            if hd.name == "New Year's Day":
+                print(hd, datetime(hd.date.year, hd.date.month,hd.date.day).isocalendar().week)
 
-    def displayHolidaysInWeek(holidayList):
+        for hd in self.innerHolidays:
+            print(datetime(hd.date.year, hd.date.month,hd.date.day).isocalendar().week)
+            break
+        return'''
+
+        yearhd = list(filter(lambda hd: hd.date.year == year, self.innerHolidays))
+        # have to convert datetime.date back into datetime.datetime to get isocalender
+        weekhd = list(filter(lambda hd: datetime(hd.date.year, hd.date.month,hd.date.day).isocalendar().week == week_number, yearhd))
+        return weekhd
+
+    def displayHolidaysInWeek(self, holidayList):
         # Use your filter_holidays_by_week to get list of holidays within a week as a parameter
         # Output formated holidays in the week. 
         # * Remember to use the holiday __str__ method.
-        a=1
 
-    def getWeather(weekNum):
+        # always used around filter, ie call is displayHolidaysInWeek(filter_holidays_by_week(self, year, week_number))
+        # feel like this is a weird way of calling it but w/e
+        for hd in holidayList:
+            print(str(hd))
+
+    def getWeather(self, weekNum):
         # Convert weekNum to range between two days
         # Use Try / Except to catch problems
         # Query API for weather in that week range
         # Format weather information and return weather string.
         a=1
 
-    def viewCurrentWeek():
+    def viewCurrentWeek(self):
         # Use the Datetime Module to look up current week and year
         # Use your filter_holidays_by_week function to get the list of holidays 
         # for the current week/year
@@ -150,16 +200,11 @@ def main():
     # 7. Ask the User if they would like to Continue, if not, end the while loop, ending the program.  If they do wish to continue, keep the program going. 
     print("bal")
     hl = HolidayList()
-    hl.addHoliday(Holiday("holi", datetime.fromisoformat("2012-12-12 10:10:10")))
-    hl.read_json("holidays.json")
-    print(hl.findHoliday("Margaret Thatcher Day", datetime.fromisoformat("2021-01-10") ))
-    print(hl.numHolidays())
-    hl.save_to_json("holidaysOUT.json")
-    #print(hl)
+    hl.scrapeHolidays()
+    hl.displayHolidaysInWeek(hl.filter_holidays_by_week(2022,1) )
+    #hl.save_to_json("scrapedOUT.json")    
     print("end")
         
-
-
 if __name__ == "__main__":
     main()
 

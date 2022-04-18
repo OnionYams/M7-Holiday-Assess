@@ -1,0 +1,176 @@
+{
+    "holidays": [
+        {
+            "name": "New Year's Day",
+            "date": "2020-01-01"
+        },
+        {
+            "name": "World Braille Day",
+            "date": "2020-01-04"
+        },
+        {
+            "name": "Epiphany",
+            "date": "2020-01-06"
+        },
+        {
+            "name": "Asarah B'Tevet",
+            "date": "2020-01-07"
+        },
+        {
+            "name": "Orthodox Christmas Day",
+            "date": "2020-01-07"
+        },
+        {
+            "name": "International Programmers' Day",
+            "date": "2020-01-07"
+        },
+        {
+            "name": "Estelle Reel Day",
+            "date": "2020-01-07"
+        },
+        {
+            "name": "Battle of New Orleans",
+            "date": "2020-01-08"
+        },
+        {
+            "name": "Stephen Foster Memorial Day",
+            "date": "2020-01-13"
+        },
+        {
+            "name": "Orthodox New Year",
+            "date": "2020-01-14"
+        },
+        {
+            "name": "New Year's Day",
+            "date": "2021-01-01"
+        },
+        {
+            "name": "World Braille Day",
+            "date": "2021-01-04"
+        },
+        {
+            "name": "Epiphany",
+            "date": "2021-01-06"
+        },
+        {
+            "name": "Orthodox Christmas Day",
+            "date": "2021-01-07"
+        },
+        {
+            "name": "International Programmers' Day",
+            "date": "2021-01-07"
+        },
+        {
+            "name": "Estelle Reel Day",
+            "date": "2021-01-07"
+        },
+        {
+            "name": "Battle of New Orleans",
+            "date": "2021-01-08"
+        },
+        {
+            "name": "Stephen Foster Memorial Day",
+            "date": "2021-01-13"
+        },
+        {
+            "name": "Orthodox New Year",
+            "date": "2021-01-14"
+        },
+        {
+            "name": "New Year's Day",
+            "date": "2022-01-01"
+        },
+        {
+            "name": "New Year's Day (substitute)",
+            "date": "2022-01-03"
+        },
+        {
+            "name": "World Braille Day",
+            "date": "2022-01-04"
+        },
+        {
+            "name": "Epiphany",
+            "date": "2022-01-06"
+        },
+        {
+            "name": "Orthodox Christmas Day",
+            "date": "2022-01-07"
+        },
+        {
+            "name": "International Programmers' Day",
+            "date": "2022-01-07"
+        },
+        {
+            "name": "Estelle Reel Day",
+            "date": "2022-01-07"
+        },
+        {
+            "name": "Battle of New Orleans",
+            "date": "2022-01-08"
+        },
+        {
+            "name": "New Year's Day",
+            "date": "2023-01-01"
+        },
+        {
+            "name": "New Year's Day (substitute)",
+            "date": "2023-01-02"
+        },
+        {
+            "name": "Asarah B'Tevet",
+            "date": "2023-01-03"
+        },
+        {
+            "name": "World Braille Day",
+            "date": "2023-01-04"
+        },
+        {
+            "name": "Epiphany",
+            "date": "2023-01-06"
+        },
+        {
+            "name": "Orthodox Christmas Day",
+            "date": "2023-01-07"
+        },
+        {
+            "name": "International Programmers' Day",
+            "date": "2023-01-07"
+        },
+        {
+            "name": "New Year's Day",
+            "date": "2024-01-01"
+        },
+        {
+            "name": "New Year's Eve observed",
+            "date": "2024-01-01"
+        },
+        {
+            "name": "World Braille Day",
+            "date": "2024-01-04"
+        },
+        {
+            "name": "Epiphany",
+            "date": "2024-01-06"
+        },
+        {
+            "name": "Orthodox Christmas Day",
+            "date": "2024-01-07"
+        },
+        {
+            "name": "International Programmers' Day",
+            "date": "2024-01-07"
+        },
+        {
+            "name": "Estelle Reel Day",
+            "date": "2024-01-07"
+        },
+        {
+            "name": "Battle of New Orleans",
+            "date": "2024-01-08"
+        },
+        {
+            "name": "Stephen Foster Memorial Day",
+            "date": "2024-01-13"
+        }
+    ]
+}
