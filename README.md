@@ -13,4 +13,4 @@ python holiday_startercode.py
 
 from any terminal where these 2 files are in the same folder location.
 
-May also require installations of bs4 and requests which can be found online, and registering for an api key at https://community-open-weather-map.p.rapidapi.com
+May also require installations of bs4 and requests which can be found online, and registering for an api key at https://community-open-weather-map.p.rapidapi.com which must replace a line later in the source code
