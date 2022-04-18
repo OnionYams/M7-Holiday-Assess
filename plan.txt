@@ -1,0 +1,3 @@
+
+Really just followed given pseudocode, see comments in each function or section for more
+left given pseudocode as is, any further comments are separated by a line
